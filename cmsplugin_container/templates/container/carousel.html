@@ -1,0 +1,32 @@
+{% load cms_tags i18n %}
+
+<div id="Carousel{{ instance.id }}" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        {% for plugin in instance.child_plugin_instances %}
+        <li data-target="#Carousel{{ instance.id }}" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+        {% endfor %}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        {% for plugin in instance.child_plugin_instances %}
+        <div class="item{% if forloop.first %} active{% endif %}">
+            <div class="container">
+                {% render_plugin plugin %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#Carousel{{ instance.id }}" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">{% trans 'Previous' %}</span>
+    </a>
+    <a class="right carousel-control" href="#Carousel{{ instance.id }}" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">{% trans 'Next' %}</span>
+    </a>
+</div>
+
