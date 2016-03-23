@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from __future__ import absolute_import, division, generators, nested_scopes, print_function, unicode_literals, with_statement
 
 from cms.plugin_base import CMSPluginBase
@@ -17,6 +15,6 @@ class ContainerPlugin(CMSPluginBase):
     allow_children = True
 
     def get_render_template(self, context, instance, placeholder):
-        return 'container/%s.html' % instance.template
+        return 'container/%s.html' % instance.get_template()
 
 
